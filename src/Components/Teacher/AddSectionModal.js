@@ -82,6 +82,7 @@ const AddSectionModal = ({isDisplayModal,classID,checkDisplaySectionModal}) => {
     useEffect(()=>{
         if(isDisplayModal){
             document.getElementById('open-admin-modal').click() 
+            setLoaderVisible(false)
         }
     },[isDisplayModal]) 
     return ( 

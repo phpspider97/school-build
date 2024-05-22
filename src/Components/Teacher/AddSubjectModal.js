@@ -101,6 +101,7 @@ const AddSubjectModal = ({isDisplayModal,classID,checkDisplaySubjectModal,classN
     useEffect(()=>{
         if(isDisplayModal){
             document.getElementById('open-admin-modal').click() 
+            setLoaderVisible(false)
         }
     },[isDisplayModal])  
     return ( 

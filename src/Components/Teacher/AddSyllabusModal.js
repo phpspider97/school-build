@@ -163,6 +163,7 @@ const AddSyllabusModal = ({isDisplayModal,classID,checkDisplaySyllabusModal,clas
         if(isDisplayModal){  
             setValue('class_name',className) 
             document.getElementById('open-admin-modal').click() 
+            setLoaderVisible(false)
         }
     },[isDisplayModal]) 
     return ( 
