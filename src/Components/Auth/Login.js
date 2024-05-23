@@ -2,11 +2,14 @@ import React,{useState, useEffect} from 'react'
 import {useNavigate, useSearchParams} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import {useForm} from 'react-hook-form'  
+import { useDispatch } from 'react-redux';
 import {useLoginMutation as useSuperAdminLoginMutation} from '../../redux/api/SuperAdminApi.js'
 import {useLoginMutation as useAdminLoginMutation} from '../../redux/api/AdminApi.js'
+import { setCredential } from '../../redux/storeData/StoreData.js'
  
 export default function Login() {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
     const {register, handleSubmit, formState: { errors }, setValue} = useForm()
     const [loaderVisible,setLoaderVisible] = useState(false)
     const [searchData, setSearchData] = useState('')
@@ -25,6 +28,12 @@ export default function Login() {
                     sessionStorage.setItem('user_name',response.data.data.super_admin_name)
                     sessionStorage.setItem('user_image',response.data.data.data_image)
                     toast.success(response.data.message) 
+                    dispatch(setCredential({
+                        token:response.data.token,
+                        login_role:data.login_role,
+                        user_name:response.data.data.super_admin_name,
+                        user_image:response.data.data.data_image,
+                    }))
                     navigate('/super')
                 }else{ 
                     toast.error(response.error.data.message)
@@ -91,9 +100,9 @@ export default function Login() {
     return (
         <div className="container-fluid p-0"> 
             {loaderVisible?
-                <div class="loader-wrapper">
-                    <div class="theme-loader">    
-                        <div class="loader-p"></div>
+                <div className="loader-wrapper">
+                    <div className="theme-loader">    
+                        <div className="loader-p"></div>
                     </div>
             </div>:''} 
             <div className="row m-0">
@@ -110,29 +119,37 @@ export default function Login() {
                                 <form id="formAuthentication" className="theme-form-old" onSubmit={handleSubmit(submitForm)} method="POST">
                                     <h3>Sign in to account</h3>
                                     <p>Enter your email & password to login</p>
-                                       
-                                    <div className="card-body common-flex main-radio-toggle mb-2"> 
-                                  
 
-                                        { searchData === null || searchData === ''?
-                                            <div className="login-radio-div-custom horizontal-scroll">
-                                                <input className="btn-check radio-light-primary" id="option1" type="radio" {...register('login_role', { required: true })} value="admin" />
-                                                <label className="btn list-light-white custom-login-button" for="option1"><i className="fa fa-user"></i> Admin</label>
+                                    <div className="col-md-12">
+                                        <div className="card-wrapper border rounded-3 checkbox-checked">
+                                            <h6 className="sub-title">Please select your role!!</h6>
+                                            { searchData === null || searchData === ''? 
+                                                <div className="form-check-size mt-3">
+                                                    <div className="form-check form-check-inline radio radio-primary">
+                                                        <input className="form-check-input" id="radioinline1" type="radio" {...register('login_role', { required: true })} value="admin" />
+                                                        <label className="form-check-label" for="radioinline1">Admin</label>
+                                                    </div>
+                                                    <div className="form-check form-check-inline radio radio-primary">
+                                                        <input className="form-check-input" id="radioinline2" type="radio"  {...register('login_role', { required: true })} value="teacher" />
+                                                        <label className="form-check-label" for="radioinline2">Teacher</label>
+                                                    </div>
+                                                    <div className="form-check form-check-inline radio radio-primary">
+                                                        <input className="form-check-input" id="radioinline3" type="radio"  {...register('login_role', { required: true })} value="student" />
+                                                        <label className="form-check-label" for="radioinline3">Student</label>
+                                                    </div>
+                                                </div>
+                                            : 
+                                            <div className="form-check-size mt-3">
+                                                <div className="form-check form-check-inline radio radio-primary">
+                                                    <input className="form-check-input" id="radioinline1" type="radio" {...register('login_role', { required: true })} value="super" />
+                                                    <label className="form-check-label" for="radioinline1">Super</label>
+                                                </div>
+                                            </div>}
+                                        </div>
 
-                                                <input className="btn-check radio-light-primary" id="option2" type="radio" {...register('login_role', { required: true })} value="teacher" />
-                                                <label className="btn list-light-white custom-login-button" for="option2"><i className="fa fa-user"></i> Teacher</label>
-
-                                                <input className="btn-check radio-light-primary" id="option3" type="radio" {...register('login_role', { required: true })} value="student" />
-                                                <label className="btn list-light-white custom-login-button" for="option3"><i className="fa fa-user"></i> Student</label>
-                                            </div>
-                                            :
-                                            <>
-                                                <input className="btn-check radio-light-primary" id="option5" type="radio" {...register('login_role', { required: true })} value="super"/>
-                                                <label className="btn list-light-light w-100 b-dark rounded-3" for="option5"><i className="fa fa-user"></i> Super Admin</label>
-                                            </> 
-                                        } 
-                                        {errors.login_role && <p className="text-danger error-custom-single">Please select your role.</p>}
-                                    </div> 
+                                        {errors.login_role && <p className="text-danger error-custom-single">Please select your role.</p>} 
+                                    </div>
+ 
                                     <hr />
                                     <div className="form-group">
                                         <label className="col-form-label">Email Address</label>

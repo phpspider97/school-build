@@ -1,5 +1,5 @@
-import React,{useState} from 'react'
-
+import React,{useState,useEffect} from 'react'
+import {Helmet} from "react-helmet"
 export default function Index() {
     const [pageName] = useState([{
         title_1 : 'Dashboard',
@@ -8,6 +8,10 @@ export default function Index() {
         title_4 : "SCHOOL",
         title_5 : "ADD-MANAGE SCHOOL'S",
     }]); 
+    const [isRender,setIsRender] = useState(false)
+    useEffect(() => {
+        setIsRender(true)
+    }, []);
     return ( 
         <>  
             <div className="page-body">
@@ -30,65 +34,98 @@ export default function Index() {
                         </div>
                     </div>
                 </div> 
-                <div className="container-fluid project-dashboard">
-                    <div className="row">
-                        <div className="col-sm-12">
-                            <div className="row">
-                                <div className="col-xl-4 col-lg-4 col-md-6"> 
-                                    <div className="card web-card">
-                                        <div className="card-body">
-                                            <div className="d-flex">
-                                                <div className="header-top">
-                                                    <div className="mobile-app bg-light-primary">
-                                                        <span></span>
-                                                        <svg>
-                                                            <use href="../assets/svg/icon-sprite.svg#improvement"></use>
-                                                        </svg>
+                <div className="container-fluid general-widget">
+                    <div className="row"> 
+                        <div class="col-xl-6 col-xl-100 box-col-12">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                                            <div class="card since">
+                                                <div class="card-body p-3">
+                                                    <div class="customer-card d-flex b-l-primary border-2">
+                                                        <div class="ms-3">
+                                                            <h3 class="mt-1">Customers</h3>
+                                                            <h5 class="mt-1">1.485</h5>
+                                                        </div>
+                                                        <div class="dashboard-user bg-light-primary">
+                                                            <span></span>
+                                                            <svg>
+                                                                <use href="../assets/svg/icon-sprite.svg#male"></use>
+                                                            </svg>
+                                                        </div>
                                                     </div>
-                                                    <div className="flex-grow-1">
-                                                        <h4>Web & mobile app</h4>
-                                                        <span>Dribble Presentation</span>
+                                                    <div class="customer">
+                                                        <span class="me-1">
+                                                            <svg>
+                                                                <use href="../assets/svg/icon-sprite.svg#arrow-up"></use>
+                                                            </svg>
+                                                        </span>
+                                                        <span class="font-success me-2">+ 4.6%</span><span>Since last Week</span>
                                                     </div>
-                                                </div>
-                                                <div className="dropdown icon-dropdown">
-                                                    <button className="btn dropdown-toggle" id="userdropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false"><i className="icon-more-alt"></i></button>
-                                                    <div className="dropdown-menu dropdown-menu-end" aria-labelledby="userdropdown"><a className="dropdown-item" href="#">Weekly</a><a className="dropdown-item" href="#">Monthly</a><a className="dropdown-item" href="#">Yearly </a></div>
                                                 </div>
                                             </div>
-                                            <div className="comment">
-                                                <ul>
-                                                    <li>
-                                                        <svg>
-                                                            <use href="../assets/svg/icon-sprite.svg#calendar"></use>
-                                                        </svg>
-                                                        <span>June 18,2023</span>
-                                                    </li>
-                                                    <li>
-                                                        <svg>
-                                                            <use href="../assets/svg/icon-sprite.svg#message"></use>
-                                                        </svg>
-                                                        <span>18</span>
-                                                    </li>
-                                                    <li>
-                                                        <svg>
-                                                            <use href="../assets/svg/icon-sprite.svg#link"></use>
-                                                        </svg>
-                                                        <span>08</span>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div className="flex-shrink-0">
-                                                <div className="user-details customers">
-                                                    <ul>
-                                                        <li className="d-inline-block"><img src="../assets/images/dashboard-3/user/1.png" alt="user" /></li>
-                                                        <li className="d-inline-block"><img src="../assets/images/dashboard-3/user/2.png" alt="user" /></li>
-                                                        <li className="d-inline-block"><img src="../assets/images/dashboard-3/user/3.png" alt="user" /></li>
-                                                    </ul>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                                            <div class="card since">
+                                                <div class="card-body money p-3">
+                                                    <div class="customer-card d-flex b-l-secondary border-2">
+                                                        <div class="ms-3">
+                                                            <h3 class="mt-1">Revenue</h3>
+                                                            <h5 class="mt-1">$5.873</h5>
+                                                        </div>
+                                                        <div class="dashboard-user bg-light-secondary">
+                                                            <span></span>
+                                                            <svg>
+                                                                <use href="../assets/svg/icon-sprite.svg#money"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="customer">
+                                                        <span class="me-1">
+                                                            <svg>
+                                                                <use href="../assets/svg/icon-sprite.svg#arrow-up"></use>
+                                                            </svg>
+                                                        </span>
+                                                        <span class="font-success me-2">+ 3.10%</span><span>Since last Week</span>
+                                                    </div>
                                                 </div>
-                                                <div className="progress-value">
-                                                    <span>Progress<span>70%</span></span>
-                                                    <div className="progress">
-                                                        <div className="progress-bar bg-primary" role="progressbar" style={{width: '70%'}} aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                                            <div class="card since">
+                                                <div class="card-body money p-3">
+                                                    <div class="customer-card d-flex b-l-secondary border-2">
+                                                        <div class="ms-3">
+                                                            <h3 class="mt-1">Revenue</h3>
+                                                            <h5 class="mt-1">$5.873</h5>
+                                                        </div>
+                                                        <div class="dashboard-user bg-light-secondary">
+                                                            <span></span>
+                                                            <svg>
+                                                                <use href="../assets/svg/icon-sprite.svg#money"></use>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                    <div class="customer">
+                                                        <span class="me-1">
+                                                            <svg>
+                                                                <use href="../assets/svg/icon-sprite.svg#arrow-up"></use>
+                                                            </svg>
+                                                        </span>
+                                                        <span class="font-success me-2">+ 3.10%</span><span>Since last Week</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-12 col-lg-12 box-col-12 xl-100">
+                                            <div class="card">
+                                                <div class="card-header">
+                                                    <h3>School Created</h3>
+                                                </div>
+                                                <div class="card-body">
+                                                    <div class="chart-container skill-chart">
+                                                        <div id="revenuegrowth-2"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -100,6 +137,15 @@ export default function Index() {
                     </div>
                 </div>  
             </div>   
+            { isRender && (isRender === true)?
+                <Helmet>  
+                    <script src="/assets/js/chart/apex-chart/moment.min.js"></script>
+                    <script src="/assets/js/chart/apex-chart/apex-chart.js"></script>
+                    <script src="/assets/js/chart/apex-chart/stock-prices.js"></script>
+                    <script src="/assets/js/chart-widget.js"></script>
+                </Helmet>
+                :''
+            }
         </>
     )
 }

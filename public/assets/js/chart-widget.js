@@ -1553,7 +1553,7 @@
     optionsLine
   );
   chartLine.render();
-
+ 
   var options = {
     series: [{
     name: 'TEAM A',
@@ -1645,8 +1645,10 @@
     },
   },
   };
+
   var chart = new ApexCharts(document.querySelector("#revenuegrowth-2"), options);
-  chart.render();
+  chart.render(); 
+
 
   var options = {
     series: [{
@@ -1786,4 +1788,5 @@
   };
   var chart = new ApexCharts(document.querySelector("#sales-overview-2"), options);
   chart.render();
+
 })(jQuery);

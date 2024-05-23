@@ -17,8 +17,16 @@ export const storeData = createSlice({
         totalNotification: (state,action) => { 
             state.value = ''
         },
+        setCredential: (state,action) => {  
+            state.value = {
+                    login_role : action.payload.login_role,
+                    user_name : action.payload.super_admin_name,
+                    token : action.payload.token,
+                    user_image : action.payload.data_image
+                }
+        },
     },
 })
  
-export const { totalNotification } = storeData.actions
+export const { totalNotification, setCredential } = storeData.actions
 export default storeData.reducer

@@ -54,8 +54,9 @@ const App = () => {
                     <div className="page-wrapper compact-wrapper" id="pageWrapper">
                     {(globalState?.token != null)?<Header />:''}
                     <div className="page-body-wrapper horizontal-menu"> 
-                    {(globalState?.token != null)?<MenuBar />:''}
-                    <Routes>    
+                    <div class="page-body-wrapper">
+                    {(globalState?.token != null)?<MenuBar />:''} 
+                    <Routes>     
                         <Route element={<ProtectedRoute />}>   
                             <Route exact path="/super" element={<SuperAdmin/>} />
                             <Route exact path="/super/school" element={<AddSchool/>} />
@@ -82,6 +83,7 @@ const App = () => {
                     </Routes> 
                     </div>
                     {(globalState?.token != null)?<Bottom />:''}
+                    </div>
                     </div>
                 </Suspense>
                 

@@ -64,7 +64,7 @@ export default function MenuBar(){
                             {(userRole === 'super')?superAdminMenuLink.map((menu_data,key)=>{
                                 return ( 
                                     <li className="sidebar-list">
-                                        <i className="fa fa-thumb-tack"></i>
+                                        {/* <i className="fa fa-thumb-tack"></i> */}
                                         <NavLink className="sidebar-link sidebar-title link-nav" to={`/${menu_data.link}`}>
                                             <svg className="stroke-icon">
                                                 <use href="../assets/svg/icon-sprite.svg#stroke-file"></use>
@@ -83,8 +83,8 @@ export default function MenuBar(){
                             {(userRole === 'admin')?adminMenuLink.map((menu_data,key)=>{
                                 return ( 
                                     <li className="sidebar-list">
-                                        <i className="fa fa-thumb-tack"></i>
-                                        <NavLink className="sidebar-link sidebar-title link-nav" to={`/${menu_data.link}`}>
+                                        {/* <i className="fa fa-thumb-tack"></i> */}
+                                        <NavLink className="sidebar-link sidebar-title link-nav sidebar-toggle" to={`/${menu_data.link}`}>
                                             <svg className="stroke-icon">
                                                 <use href="../assets/svg/icon-sprite.svg#stroke-file"></use>
                                             </svg>

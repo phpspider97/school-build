@@ -245,6 +245,7 @@ export default function AddStudent() {
                                             <button className="btn btn-primary-gradien btn-sm" type="button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-fullscreen" id="open-modal" onClick={()=>reset()}>
                                                 <b>{pageName[0].title_1}</b>
                                             </button> 
+                                             
                                         </div> 
                                     </div>
                                     <div className="list-product">

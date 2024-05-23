@@ -1,11 +1,21 @@
 import React from 'react'
 import {useSelector} from 'react-redux' 
 import {Link, useNavigate} from 'react-router-dom'
+import { useDispatch } from 'react-redux';
+import { setCredential } from '../../redux/storeData/StoreData.js'
+
 export default function Header() { 
+    const dispatch = useDispatch()
     const globalState = useSelector((state)=>state.sessionData.value)
     const navigation = useNavigate()
     const logout = () => {
         sessionStorage.clear() 
+        dispatch(setCredential({
+            token:null,
+            login_role:null,
+            user_name:null,
+            user_image:null,
+        }))
         navigation('/')
     }
     return (

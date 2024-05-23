@@ -6,6 +6,7 @@ import {toast} from 'react-toastify'
 import AddAdminModal from './AddAdminModal'
 
 import {useAddMutation, useEditMutation, useDeleteMutation, useDeleteBulkMutation, useLazyParticularQuery, useLazyListQuery} from '../../redux/api/SchoolApi.js'
+import Breadcrum from '../Common/Breadcrum'
 
 export default function Index() {
     const [pageName] = useState([{
@@ -175,43 +176,29 @@ export default function Index() {
                         <div class="loader-p"></div>
                     </div>
                 </div>:''} 
-                <div className="container-fluid">
-                    <div className="page-title">
-                        <div className="row">
-                            <div className="col-sm-6 ps-0"><h3>{pageName[0].title_1}</h3></div>
-                            <div className="col-sm-6 pe-0">
-                                <ol className="breadcrumb">
-                                    <li className="breadcrumb-item">
-                                        <a href="#">
-                                            <svg className="stroke-icon">
-                                                <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
-                                            </svg>
-                                        </a>
-                                    </li> 
-                                    <li className="breadcrumb-item active">{pageName[0].title_1}</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
+                <Breadcrum title={pageName[0].title_1} /> 
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="card">
                                 <div className="card-body custom-card-list">
                                     <div className="list-product-header">
-                                        <div> 
-                                            {(!deleteDisabled)?
-                                            <button className="btn btn-danger-gradien btn-sm" type="button" onClick={()=> { deleteBulkData() 
-                                            setLoaderVisible(true) } } disabled={deleteDisabled}>
-                                                <b>{pageName[0].title_2}</b>
-                                            </button> 
-                                            :''}
-
-                                            <button className="btn btn-primary-gradien btn-sm" type="button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-fullscreen" id="open-modal" onClick={()=>reset()}>
-                                                <b>{pageName[0].title_1}</b>
-                                            </button> 
-                                        </div> 
+ 
+                                            <div>
+                                                <span className="custom-horizontal-scroll">
+                                                {(!deleteDisabled)?
+                                                <button className="btn btn-danger-gradien btn-sm" type="button" onClick={()=>{ deleteBulkData() 
+                                                setLoaderVisible(true) } } disabled={deleteDisabled}>
+                                                    <b>{pageName[0].title_2}</b>
+                                                </button>
+                                                :''}
+                                                &nbsp;&nbsp;
+                                                <button className="btn btn-primary-gradien btn-sm ml-3" type="button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-fullscreen" id="open-modal" onClick={()=>reset()}>
+                                                    <b>{pageName[0].title_1}</b>
+                                                </button> 
+                                                   
+                                                </span>
+                                            </div>
                                     </div>
                                     <div className="list-product">
                                         <DataTable

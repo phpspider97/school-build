@@ -46530,7 +46530,9 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
     position: fixed;
   }
   .login-card {
-    background: transparent;
+    background: #00B4DB;
+    background: -webkit-linear-gradient(to right, #0083B0, #00B4DB);
+    background: linear-gradient(to right, #0083B0, #00B4DB);
   }
   .knowledgebase-bg {
     height: 400px;
@@ -49779,6 +49781,33 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
   padding: 30px;
   border: 1px solid black; 
 }
+.lnOUep{
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+} 
+.faZveH{
+  font-size: 15px;
+}
+@media (max-width: 992px) {
+  .custom-horizontal-scroll{   
+    width:200px;
+    overflow-x: scroll; 
+    display: block;
+    white-space: nowrap;
+    text-align: end;
+  }
+
+  .lnOUep{
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+  } 
+  .faZveH{
+    font-size: 13px;
+  }
+  
+} 
 /* .login-radio-div-custom{
   margin: 4px, 4px;
   padding: 4px; 
