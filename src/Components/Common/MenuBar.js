@@ -30,7 +30,7 @@ export default function MenuBar(){
         <div className="sidebar-wrapper" data-layout="fill-svg"> 
             <div>
                 <div className="logo-wrapper">
-                    <Link to="/"><img className="img-fluid" src="https://cdn.pixabay.com/photo/2013/07/12/18/36/pencil-153561_1280.png" alt="" style={{width:'150px',height:'35px'}}/></Link>
+                    <Link to="/"><img className="img-fluid" src="https://cdn.pixabay.com/photo/2016/10/06/19/03/bus-1719744_1280.png" alt="logo" style={{width:'80px',height:'35px'}}/></Link>
                     <div className="toggle-sidebar">
                         <svg className="sidebar-toggle">
                             <use href="../assets/svg/icon-sprite.svg#toggle-icon"></use>
@@ -39,7 +39,7 @@ export default function MenuBar(){
                 </div>
                 <div className="logo-icon-wrapper">
                     <Link to="/">
-                        <img className="img-fluid" src="https://cdn.pixabay.com/photo/2013/07/12/18/36/pencil-153561_1280.png" alt="" style={{width:'40px',height:'35px'}}/>
+                        <img className="img-fluid" src="https://cdn.pixabay.com/photo/2016/10/06/19/03/bus-1719744_1280.png" alt="logo" style={{width:'45px',height:'35px'}}/>
                     </Link>
                 </div>
                 <nav className="sidebar-main">
@@ -65,7 +65,7 @@ export default function MenuBar(){
                                 return ( 
                                     <li className="sidebar-list">
                                         {/* <i className="fa fa-thumb-tack"></i> */}
-                                        <NavLink className="sidebar-link sidebar-title link-nav" to={`/${menu_data.link}`}>
+                                        <NavLink className="sidebar-link sidebar-title link-nav toggle-sidebar-custom" to={`/${menu_data.link}`}>
                                             <svg className="stroke-icon">
                                                 <use href="../assets/svg/icon-sprite.svg#stroke-file"></use>
                                             </svg>
@@ -84,7 +84,7 @@ export default function MenuBar(){
                                 return ( 
                                     <li className="sidebar-list">
                                         {/* <i className="fa fa-thumb-tack"></i> */}
-                                        <NavLink className="sidebar-link sidebar-title link-nav sidebar-toggle" to={`/${menu_data.link}`}>
+                                        <NavLink className="sidebar-link sidebar-title link-nav toggle-sidebar-custom" to={`/${menu_data.link}`}>
                                             <svg className="stroke-icon">
                                                 <use href="../assets/svg/icon-sprite.svg#stroke-file"></use>
                                             </svg>

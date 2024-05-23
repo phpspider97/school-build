@@ -216,6 +216,14 @@
   // toggle sidebar
   $nav = $(".sidebar-wrapper");
   $header = $(".page-header");
+
+  $toggle_nav_top_custom = $(".toggle-sidebar-custom");
+  $toggle_nav_top_custom.click(function () {
+    $nav.toggleClass("close_icon");
+    $header.toggleClass("close_icon");
+    $(window).trigger("overlay");
+  });
+
   $toggle_nav_top = $(".toggle-sidebar");
   $toggle_nav_top.click(function () {
     $nav.toggleClass("close_icon");

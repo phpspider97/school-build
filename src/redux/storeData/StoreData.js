@@ -22,7 +22,8 @@ export const storeData = createSlice({
                     login_role : action.payload.login_role,
                     user_name : action.payload.super_admin_name,
                     token : action.payload.token,
-                    user_image : action.payload.data_image
+                    user_image : action.payload.data_image,
+                    school_id : action.payload?.school_id
                 }
         },
     },

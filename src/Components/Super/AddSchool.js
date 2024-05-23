@@ -227,7 +227,7 @@ export default function Index() {
                                     <div className="card">
                                         <div className="card-body">
                                             <form method="POST" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
-                                                <div className="form theme-form">
+                                                <div className="form theme-form-old">
                                                     <div className="row">
                                                         <div className="col-md-12">
                                                             <div className="mb-3">

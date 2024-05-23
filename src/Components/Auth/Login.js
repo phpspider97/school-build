@@ -52,6 +52,13 @@ export default function Login() {
                     sessionStorage.setItem('user_name',response.data.data.admin_name)
                     sessionStorage.setItem('user_image',response.data.data.data_image)
                     toast.success(response.data.message) 
+                    dispatch(setCredential({
+                        token:response.data.token,
+                        login_role:data.login_role,
+                        user_name:response.data.data.super_admin_name,
+                        user_image:response.data.data.data_image,
+                        school_id:response.data.data.school_id,
+                    }))
                     navigate('/admin')
                 }else{ 
                     toast.error(response.error.data.message)
