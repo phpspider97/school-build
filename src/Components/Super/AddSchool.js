@@ -182,10 +182,9 @@ export default function Index() {
                         <div className="col-sm-12">
                             <div className="card">
                                 <div className="card-body custom-card-list">
-                                    <div className="list-product-header">
- 
-                                            <div>
-                                                <span className="custom-horizontal-scroll">
+                                    <div className="list-product-header"> 
+                                        <div>
+                                            <div className="custom-horizontal-scroll">
                                                 {(!deleteDisabled)?
                                                 <button className="btn btn-danger-gradien btn-sm" type="button" onClick={()=>{ deleteBulkData() 
                                                 setLoaderVisible(true) } } disabled={deleteDisabled}>
@@ -195,10 +194,9 @@ export default function Index() {
                                                 &nbsp;&nbsp;
                                                 <button className="btn btn-primary-gradien btn-sm ml-3" type="button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-fullscreen" id="open-modal" onClick={()=>reset()}>
                                                     <b>{pageName[0].title_1}</b>
-                                                </button> 
-                                                   
-                                                </span>
+                                                </button>  
                                             </div>
+                                        </div>
                                     </div>
                                     <div className="list-product">
                                         <DataTable
@@ -234,21 +232,36 @@ export default function Index() {
                                                         <div className="col-md-12">
                                                             <div className="mb-3">
                                                                 <label>Name</label>
-                                                                <input className="form-control" type="text" placeholder="School Name" {...register('school_name', { required: 'This field is required.' })} />
-                                                                {errors.school_name && <span className="error-message">{errors.school_name.message}</span>}
+                                                                <div className="input-group">
+                                                                    <span className="input-group-text">
+                                                                        <i class="icofont icofont-building-alt"></i>
+                                                                    </span>
+                                                                    <input className="form-control" type="text" placeholder="School Name" {...register('school_name', { required: 'This field is required.' })} />
+                                                                    {errors.school_name && <span className="error-message">{errors.school_name.message}</span>}
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div className="col-md-12">
                                                             <div className="mb-3">
                                                                 <label>Email</label>
-                                                                <input className="form-control" type="email" placeholder="School Email" {...register('school_email', { required: 'This field is required.' })} />
+                                                                <div className="input-group">
+                                                                    <span className="input-group-text">
+                                                                        <i class="icofont icofont-envelope"></i>
+                                                                    </span>
+                                                                    <input className="form-control" type="email" placeholder="School Email" {...register('school_email', { required: 'This field is required.' })} />
+                                                                </div>
                                                                 {errors.school_email && <span className="error-message">{errors.school_email.message}</span>}
                                                             </div>
                                                         </div>  
                                                         <div className="col-md-12">
                                                             <div className="mb-3">
                                                                 <label>Phone Number</label>
-                                                                <input className="form-control" type="number" placeholder="School Phone Number" {...register('school_number', { required: 'This field is required.' })} />
+                                                                <div className="input-group">
+                                                                    <span className="input-group-text">
+                                                                        <i class="icofont icofont-iphone"></i>
+                                                                    </span>
+                                                                    <input className="form-control" type="number" placeholder="School Phone Number" {...register('school_number', { required: 'This field is required.' })} />
+                                                                </div>
                                                                 {errors.school_number && <span className="error-message">{errors.school_number.message}</span>}
                                                             </div>
                                                         </div>  
@@ -264,7 +277,7 @@ export default function Index() {
                                                             <div className="text-end">  
                                                                
                                                                 <button type="submit" className="btn btn-success-gradien border-dark me-3">
-                                                                    <b>Add</b>
+                                                                    <b>Save</b>
                                                                 </button>
                                                                 <button type="reset" className="btn btn-danger-gradien border-dark">
                                                                     <b>Reset</b>

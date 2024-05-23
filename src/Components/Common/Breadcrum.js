@@ -5,8 +5,8 @@ export default function Breadcrum({title}) {
     <div className="container-fluid">
         <div className="page-title">
             <div className="row">
-                <div className="col-sm-6 ps-0"><h3>{title}</h3></div>
-                <div className="col-sm-6 pe-0">
+                <div className="col-6 ps-0"><h3>{title}</h3></div>
+                <div className="col-6 pe-0">
                     <ol className="breadcrumb">
                         <li className="breadcrumb-item">
                             <i class="fa fa-home"></i>

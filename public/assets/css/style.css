@@ -49790,14 +49790,19 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
   font-size: 15px;
 }
 @media (max-width: 992px) {
+  /* add button scroll start */
+  .list-product-header div {
+    padding-top: 10px;
+    margin-right: 10px;
+  }
   .custom-horizontal-scroll{   
-    width:200px;
+    width:300px;
     overflow-x: scroll; 
     display: block;
     white-space: nowrap;
     text-align: end;
   }
-
+  /* add button scroll end */
   .lnOUep{
     font-size: 12px;
     font-weight: bold;
@@ -49805,6 +49810,10 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
   } 
   .faZveH{
     font-size: 13px;
+  }
+  .breadcrumb{
+    font-size: 12px;
+    justify-content:end !important;
   }
   
 } 

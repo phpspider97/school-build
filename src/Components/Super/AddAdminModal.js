@@ -201,28 +201,48 @@ const AddAdminModal = ({isDisplayModal,schoolID,checkDisplayAdminModal}) => {
                                                         <div className="col-md-6">
                                                             <div className="mb-3">
                                                                 <label>Name</label>
-                                                                <input className="form-control" type="text" placeholder="Admin Name" {...register('admin_name', { required: 'This field is required.' })} />
+                                                                <div className="input-group">
+                                                                    <span className="input-group-text">
+                                                                        <i class="icofont icofont-ui-user"></i>
+                                                                    </span>
+                                                                    <input className="form-control" type="text" placeholder="Admin Name" {...register('admin_name', { required: 'This field is required.' })} />
+                                                                </div>
                                                                 {errors.admin_name && <span className="error-message">{errors.admin_name.message}</span>}
                                                             </div>
                                                         </div>
                                                         <div className="col-md-6">
                                                             <div className="mb-3">
                                                                 <label>Email</label>
-                                                                <input className="form-control" type="email" placeholder="Admin Email" {...register('admin_email', { required: 'This field is required.' })} />
+                                                                <div className="input-group">
+                                                                    <span className="input-group-text">
+                                                                        <i class="icofont icofont-envelope"></i>
+                                                                    </span>
+                                                                    <input className="form-control" type="email" placeholder="Admin Email" {...register('admin_email', { required: 'This field is required.' })} />
+                                                                </div>
                                                                 {errors.admin_email && <span className="error-message">{errors.admin_email.message}</span>}
                                                             </div>
                                                         </div> 
                                                         <div className="col-md-6">
                                                             <div className="mb-3">
                                                                 <label>Phone</label>
-                                                                <input className="form-control" type="number" placeholder="Admin Phone" {...register('admin_number', { required: 'This field is required.' })} />
+                                                                <div className="input-group">
+                                                                    <span className="input-group-text">
+                                                                        <i class="icofont icofont-iphone"></i>
+                                                                    </span>
+                                                                    <input className="form-control" type="number" placeholder="Admin Phone" {...register('admin_number', { required: 'This field is required.' })} />
+                                                                </div>
                                                                 {errors.admin_number && <span className="error-message">{errors.admin_number.message}</span>}
                                                             </div>
                                                         </div>  
                                                         <div className="col-md-6">
                                                             <div className="mb-3">
                                                                 <label>Admin Password</label>
-                                                                <input className="form-control" type="password" placeholder="Admin Password" {...register('admin_password', { required: false })} /> 
+                                                                <div className="input-group">
+                                                                    <span className="input-group-text">
+                                                                        <i class="icofont icofont-ui-password"></i>
+                                                                    </span>
+                                                                    <input className="form-control" type="password" placeholder="Admin Password" {...register('admin_password', { required: false })} /> 
+                                                                </div>
                                                             </div>
                                                         </div>  
                                                         <div className="col-md-12"> 
@@ -236,7 +256,7 @@ const AddAdminModal = ({isDisplayModal,schoolID,checkDisplayAdminModal}) => {
                                                         <div className="col">
                                                             <div className="text-end">   
                                                                 <button type="submit" className="btn btn-success-gradien border-dark me-3">
-                                                                    <b>Add</b>
+                                                                    <b>Save</b>
                                                                 </button>
                                                                 <button type="reset" className="btn btn-danger-gradien border-dark">
                                                                     <b>Reset</b>
