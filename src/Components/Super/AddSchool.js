@@ -48,7 +48,7 @@ export default function Index() {
           },
         {
             name: 'Status',
-            selector: row => (row.is_active === 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
+            selector: row => (row.is_active == 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
         },
         {
             name: 'Action',
@@ -180,7 +180,7 @@ export default function Index() {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-12">
-                            <div className="card">
+                            <div className="card"> 
                                 <div className="card-body custom-card-list">
                                     <div className="list-product-header"> 
                                         <div>

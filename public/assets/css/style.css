@@ -49747,6 +49747,9 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
   border-right:2px solid black;
   border-bottom:2px solid black;
 }
+.custom-modal-card-list{
+  border:2px dashed black;
+}
  
 .custom-login-button{
   width:110px;
@@ -49787,7 +49790,11 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
   text-transform: uppercase;
 } 
 .faZveH{
-  font-size: 15px;
+  font-size: 16px;
+}
+.faZveH i{
+  font-size: 20px;
+  margin-left: 4px;
 }
 @media (max-width: 992px) {
   /* add button scroll start */

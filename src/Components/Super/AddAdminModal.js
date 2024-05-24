@@ -48,7 +48,7 @@ const AddAdminModal = ({isDisplayModal,schoolID,checkDisplayAdminModal}) => {
           },
         {
             name: 'Status',
-            selector: row => (row.is_active === 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
+            selector: row => (row.is_active == 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
         },
         {
             name: 'Action',
@@ -270,8 +270,9 @@ const AddAdminModal = ({isDisplayModal,schoolID,checkDisplayAdminModal}) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="list-product">
+                            <div className="list-product custom-modal-card-list">
                                 <DataTable
+                                    title="Admin List"
                                     columns={columns}
                                     data={data}
                                     pagination

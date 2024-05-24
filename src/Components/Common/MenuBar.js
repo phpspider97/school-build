@@ -6,7 +6,7 @@ export default function MenuBar(){
     const [userRole] = useState(globalState?.login_role)
     const [superAdminMenuLink] = useState([
         {'id':1,'name':'Dashboard','icon':'curved-left','link':'super','svgIconID':'fill-home'}, 
-        {'id':1,'name':'Add School','icon':'curved-left','link':'super/school','svgIconID':'dash'},
+        {'id':1,'name':'Add School','icon':'curved-left','link':'super/school','svgIconID':'landing-avatar'},
     ]); 
     const [adminMenuLink] = useState([
         {'name':'Dashboard','icon':'curved-left','link':'admin','svgIconID':'fill-home'}, 
@@ -15,6 +15,7 @@ export default function MenuBar(){
         {'name':'Student','icon':'curved-left','link':'admin/add-student','svgIconID':'fill-user'},
         {'name':'Attendance','icon':'curved-left','link':'admin/student-attendance','svgIconID':'fill-task'},
         {'name':'Class','icon':'curved-left','link':'admin/add-class','svgIconID':'fill-board'},
+        {'name':'Subject','icon':'curved-left','link':'admin/add-subject','svgIconID':'fill-board'},
         {'name':'Department','icon':'curved-left','link':'admin/add-department','svgIconID':'landing-button'},
         {'name':'Assignment','icon':'curved-left','link':'admin/add-assignment','svgIconID':'fill-file'},
         {'name':'Routine','icon':'curved-left','link':'admin/add-routine','svgIconID':'fill-icons'},
@@ -70,7 +71,7 @@ export default function MenuBar(){
                                                 <use href="../assets/svg/icon-sprite.svg#stroke-file"></use>
                                             </svg>
                                             <svg className="fill-icon">
-                                                <use href="../assets/svg/icon-sprite.svg#fill-file"></use>
+                                                <use href={`../assets/svg/icon-sprite.svg#${menu_data.svgIconID}`}></use>
                                             </svg> 
                                             <span> 
                                                 <i className={`icofont icofont-${menu_data.icon}`}></i>  {menu_data.name}  
