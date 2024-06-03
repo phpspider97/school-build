@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form"
 import DataTable from 'react-data-table-component'
 import {toast} from 'react-toastify'
 //import {ThreeDots} from 'react-loader-spinner'   
+import Breadcrum from '../Common/Breadcrum'
 
 import {useLazyListQuery, useAddExamMarkMutation, useParticularExamMarkMutation} from '../../redux/api/StudentApi.js' 
 import {useLazyListQuery as useLazyExamListQuery} from '../../redux/api/ExamApi.js'
@@ -167,25 +168,7 @@ export default function ExamMark() {
                         <div class="loader-p"></div>
                     </div>
                 </div>:''} 
-                <div className="container-fluid">
-                    <div className="page-title">
-                        <div className="row">
-                            <div className="col-sm-6 ps-0"><h3>{pageName[0].title_1}</h3></div>
-                            <div className="col-sm-6 pe-0">
-                                <ol className="breadcrumb">
-                                    <li className="breadcrumb-item">
-                                        <a href="#">
-                                            <svg className="stroke-icon">
-                                                <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
-                                            </svg>
-                                        </a>
-                                    </li> 
-                                    <li className="breadcrumb-item active">{pageName[0].title_1}</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
+                <Breadcrum title={pageName[0].title_1} />  
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-12">

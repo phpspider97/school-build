@@ -44,7 +44,7 @@ const AddSyllabusModal = ({isDisplayModal,classID,checkDisplaySyllabusModal,clas
         }, 
         {
             name: 'Status',
-            selector: row => (row.is_active === 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
+            selector: row => (row.is_active == 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
         },
         {
             name: 'Action',
@@ -174,7 +174,7 @@ const AddSyllabusModal = ({isDisplayModal,classID,checkDisplaySyllabusModal,clas
                     <div class="loader-p"></div>
                 </div>
             </div>:''} 
-            <button data-bs-toggle="modal" data-bs-target=".admin-modal-fullscreen" id="open-admin-modal" style={{displa:'none'}}>Open admin</button>
+            <button data-bs-toggle="modal" data-bs-target=".admin-modal-fullscreen" id="open-admin-modal" style={{display:'none'}}>Open admin</button>
 
             <div className="modal fade admin-modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="myFullLargeModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-fullscreen">
@@ -216,18 +216,18 @@ const AddSyllabusModal = ({isDisplayModal,classID,checkDisplaySyllabusModal,clas
                                                         </div>  
                                                         <div className="col-md-12"> 
                                                             <div className="form-check form-switch">
-                                                                <input className="form-check-input" id="flexSwitchCheckDefault" type="checkbox" role="switch" {...register('is_active', { required: false })} />
-                                                                <label className="form-check-label"  htmlFor="flexSwitchCheckDefault">Is Active</label>
+                                                                <input className="form-check-input" id="flexSwitchCheckDefault121" type="checkbox" role="switch" {...register('is_active', { required: false })} />
+                                                                <label className="form-check-label"  htmlFor="flexSwitchCheckDefault121">Is Active</label>
                                                             </div>
                                                         </div>
                                                     </div>  
                                                     <div className="row">
                                                         <div className="col">
                                                             <div className="text-end">   
-                                                                <button type="submit" className="btn btn-success border-dark me-3">
-                                                                    <b>Add</b>
+                                                                <button type="submit" className="btn btn-success-gradien border-dark me-3">
+                                                                    <b>Save</b>
                                                                 </button>
-                                                                <button type="reset" className="btn btn-danger border-dark">
+                                                                <button type="reset" className="btn btn-danger-gradien border-dark">
                                                                     <b>Reset</b>
                                                                 </button>
                                                             </div>
@@ -239,8 +239,9 @@ const AddSyllabusModal = ({isDisplayModal,classID,checkDisplaySyllabusModal,clas
                                     </div>
                                 </div>
                             </div>
-                            <div className="list-product">
+                            <div className="list-product custom-modal-card-list">
                                 <DataTable
+                                    title='Syllabus List'
                                     columns={columns}
                                     data={data}
                                     pagination

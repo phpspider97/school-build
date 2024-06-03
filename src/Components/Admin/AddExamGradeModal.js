@@ -176,7 +176,7 @@ const AddExamGradeModal = ({isDisplayModal,checkDisplayExamGradeModal}) => {
                     <div class="loader-p"></div>
                 </div>
             </div>:''} 
-            <button data-bs-toggle="modal" data-bs-target=".admin-modal-fullscreen" id="open-admin-modal" style={{displa:'none'}}>Open admin</button>
+            <button data-bs-toggle="modal" data-bs-target=".admin-modal-fullscreen" id="open-admin-modal" style={{display:'none'}}>Open admin</button>
 
             <div className="modal fade admin-modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="myFullLargeModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-fullscreen">
@@ -193,7 +193,7 @@ const AddExamGradeModal = ({isDisplayModal,checkDisplayExamGradeModal}) => {
                             <div className="row border-dark">
                                 <div className="col-sm-12">
                                     <div className="card">
-                                        <div className="card-body custom-card-list">
+                                        <div className="card-body">
                                             <form method="POST" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
                                                 <div className="form theme-form">
                                                     <div className="row">
@@ -235,10 +235,10 @@ const AddExamGradeModal = ({isDisplayModal,checkDisplayExamGradeModal}) => {
                                                     <div className="row">
                                                         <div className="col">
                                                             <div className="text-end">   
-                                                                <button type="submit" className="btn btn-success border-dark me-3">
-                                                                    <b>Add</b>
+                                                                <button type="submit" className="btn btn-success-gradien border-dark me-3">
+                                                                    <b>Save</b>
                                                                 </button>
-                                                                <button type="reset" className="btn btn-danger border-dark">
+                                                                <button type="reset" className="btn btn-danger-gradien border-dark">
                                                                     <b>Reset</b>
                                                                 </button>
                                                             </div>

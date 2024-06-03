@@ -112,7 +112,7 @@ const AddSubjectModal = ({isDisplayModal,classID,checkDisplaySubjectModal,classN
                     <div class="loader-p"></div>
                 </div>
             </div>:''} 
-            <button data-bs-toggle="modal" data-bs-target=".admin-modal-fullscreen" id="open-admin-modal" style={{displa:'none'}}>Open admin</button>
+            <button data-bs-toggle="modal" data-bs-target=".admin-modal-fullscreen" id="open-admin-modal" style={{display:'none'}}>Open admin</button>
 
             <div className="modal fade admin-modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="myFullLargeModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-fullscreen">
@@ -135,10 +135,10 @@ const AddSubjectModal = ({isDisplayModal,classID,checkDisplaySubjectModal,classN
                                                     <div className="col-md-12">
                                                         <div className="mb-3">
                                                             <label>Class Name</label>
-                                                            <input className="form-control" type="text" placeholder="Class Name" {...register('class_name', { required: false })} /> 
+                                                            <input className="form-control" type="text" placeholder="Class Name" {...register('class_name', { required: false })} disabled/> 
                                                         </div>
                                                     </div> 
-                                                    <div className="row ml-3"> 
+                                                    <div className="row" style={{marginLeft:'3px'}}> 
                                                     { subjectList.map((subject_data,key)=>{ 
                                                         return (
                                                         selectedSubjectList?.includes(subject_data)?

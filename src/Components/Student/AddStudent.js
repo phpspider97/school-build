@@ -3,6 +3,8 @@ import {useForm} from "react-hook-form"
 import DataTable from 'react-data-table-component'
 import {toast} from 'react-toastify'
 //import {ThreeDots} from 'react-loader-spinner'  
+import Breadcrum from '../Common/Breadcrum'
+import BulkStudentModal from './BulkStudentModal'
 
 import {useAddMutation, useEditMutation, useDeleteMutation, useDeleteBulkMutation, useLazyParticularListQuery, useLazyListQuery} from '../../redux/api/StudentApi.js'
 
@@ -15,6 +17,7 @@ export default function AddStudent() {
         title_3 : "EDIT STUDENT",
         title_4 : "STUDENT",
         title_5 : "ADD-MANAGE STUDENT'S",
+        title_6 : "UPLOAD BULK STUDENT'S",
     }])
 
     const [data,setData] = useState([]) 
@@ -27,6 +30,7 @@ export default function AddStudent() {
     const [adminState] = useState(['Punjab','Haryana','Himachal'])
     const [genderList] = useState(['Male','Female','Other'])
     const [bloodGroupList] = useState(['O+','A+','B+','AB+','O-','A-','B-','AB-'])
+    const [displayStudentModal,setDisplayStudentModal] = useState(false)
 
     const {register, handleSubmit, formState: { errors }, setValue, reset} = useForm()
  
@@ -45,6 +49,14 @@ export default function AddStudent() {
           width:'50px'
         },
         {
+            name: 'Class',
+            selector: row => 'One'
+        },
+        {
+        name: 'Section',
+        selector: row => 'A'
+        },
+        {
           name: 'Name',
           selector: row => row.student_name
         },
@@ -54,7 +66,7 @@ export default function AddStudent() {
           },
         {
             name: 'Status',
-            selector: row => (row.is_active === 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
+            selector: row => (row.is_active == 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
         },
         {
             name: 'Action',
@@ -160,14 +172,14 @@ export default function AddStudent() {
         }
     }
     
-    useEffect(()=>{  
+    useEffect(()=>{   
         getAllRecord().then((response)=>{ 
             setData(response?.data?.data) 
             setLoaderVisible(false)
         }).catch((err)=>{ 
             toast.error(`Error : ${err.message}`)
         })
-    },[getAllValidationRecord])
+    },[getAllValidationRecord,displayStudentModal])
 
     const handleChange = ({ selectedRows }) => {
         setDeleteDisabled(true)
@@ -199,7 +211,9 @@ export default function AddStudent() {
         const class_data = JSON.parse(select_data) 
         setSectionData(class_data.class_section)
     }
-
+    const checkDisplayBulkStudentModal = (data) => {
+        setDisplayStudentModal(data)
+    }  
     return ( 
         <>  
             <div className="page-body">
@@ -209,25 +223,7 @@ export default function AddStudent() {
                         <div class="loader-p"></div>
                     </div>
                 </div>:''} 
-                <div className="container-fluid">
-                    <div className="page-title">
-                        <div className="row">
-                            <div className="col-sm-6 ps-0"><h3>{pageName[0].title_1}</h3></div>
-                            <div className="col-sm-6 pe-0">
-                                <ol className="breadcrumb">
-                                    <li className="breadcrumb-item">
-                                        <a href="#">
-                                            <svg className="stroke-icon">
-                                                <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
-                                            </svg>
-                                        </a>
-                                    </li> 
-                                    <li className="breadcrumb-item active">{pageName[0].title_1}</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
+                <Breadcrum title={pageName[0].title_1} />  
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-12">
@@ -241,6 +237,12 @@ export default function AddStudent() {
                                                 <b>{pageName[0].title_2}</b>
                                             </button> 
                                             :''}
+
+                                            <button className="btn btn-info-gradien btn-sm" type="button" onClick={()=>{   
+                                                setDisplayStudentModal(true)  
+                                            }}>
+                                                <b>{pageName[0].title_6}</b>
+                                            </button> 
 
                                             <button className="btn btn-primary-gradien btn-sm" type="button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-fullscreen" id="open-modal" onClick={()=>reset()}>
                                                 <b>{pageName[0].title_1}</b>
@@ -281,7 +283,7 @@ export default function AddStudent() {
                                                     <div className="row">
                                                         <div className="col-md-4 mb-3">
                                                             <label>Student Class</label>
-                                                            <select className="form-control" {...register('student_class', { required: true })} onChange={(e)=>updateSectionData(e)}id="classSelectBox">    
+                                                            <select className="form-control" {...register('student_class', { required: true })} onChange={(e)=>updateSectionData(e)} id="classSelectBox">    
                                                             <option value="">Select Class</option>
                                                                 { (classData)?classData.map((classItem,key)=>{
                                                                     return(  
@@ -398,7 +400,7 @@ export default function AddStudent() {
                                                         <div className="col">
                                                             <div className="text-end">   
                                                                 <button type="submit" className="btn btn-primary-gradien btn-lg border-dark me-3">
-                                                                    <b>Add</b>
+                                                                    <b>Save</b>
                                                                 </button>
                                                                 <button type="reset" className="btn btn-danger-gradien btn-lg border-dark">
                                                                     <b>Reset</b>
@@ -416,6 +418,7 @@ export default function AddStudent() {
                     </div>
                 </div>
             </div> 
+            <BulkStudentModal isDisplayModal={displayStudentModal} checkDisplayBulkStudentModal={checkDisplayBulkStudentModal}/>
         </div>    
     </>
     )

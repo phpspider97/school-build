@@ -44,7 +44,7 @@ const AddExamModal = ({isDisplayModal,checkDisplayExamModal}) => {
         }, 
         {
             name: 'Status',
-            selector: row => (row.is_active === 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
+            selector: row => (row.is_active == 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
         },
         {
             name: 'Action',
@@ -165,7 +165,7 @@ const AddExamModal = ({isDisplayModal,checkDisplayExamModal}) => {
                         <div class="loader-p"></div>
                     </div>
             </div>:''} 
-            <button data-bs-toggle="modal" data-bs-target=".admin-modal-fullscreen" id="open-admin-modal" style={{displa:'none'}}>Open admin</button>
+            <button data-bs-toggle="modal" data-bs-target=".admin-modal-fullscreen" id="open-admin-modal" style={{display:'none'}}>Open admin</button>
 
             <div className="modal fade admin-modal-fullscreen" tabindex="-1" role="dialog" aria-labelledby="myFullLargeModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-fullscreen">
@@ -204,10 +204,10 @@ const AddExamModal = ({isDisplayModal,checkDisplayExamModal}) => {
                                                     <div className="row">
                                                         <div className="col">
                                                             <div className="text-end">   
-                                                                <button type="submit" className="btn btn-success border-dark me-3">
-                                                                    <b>Add</b>
+                                                                <button type="submit" className="btn btn-success-gradien border-dark me-3">
+                                                                    <b>Save</b>
                                                                 </button>
-                                                                <button type="reset" className="btn btn-danger border-dark">
+                                                                <button type="reset" className="btn btn-danger-gradien border-dark">
                                                                     <b>Reset</b>
                                                                 </button>
                                                             </div>

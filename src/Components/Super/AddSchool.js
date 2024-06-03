@@ -4,9 +4,10 @@ import DataTable from 'react-data-table-component'
 import {toast} from 'react-toastify'
 //import {ThreeDots} from 'react-loader-spinner' 
 import AddAdminModal from './AddAdminModal'
+import Breadcrum from '../Common/Breadcrum'
 
 import {useAddMutation, useEditMutation, useDeleteMutation, useDeleteBulkMutation, useLazyParticularQuery, useLazyListQuery} from '../../redux/api/SchoolApi.js'
-import Breadcrum from '../Common/Breadcrum'
+
 
 export default function Index() {
     const [pageName] = useState([{
@@ -39,11 +40,11 @@ export default function Index() {
           width:'50px'
         },
         {
-          name: 'School Name',
+          name: 'Name',
           selector: row => row.school_name
         },
         {
-            name: 'School Email',
+            name: 'Email',
             selector: row => row.school_email
           },
         {
@@ -56,7 +57,6 @@ export default function Index() {
                 <i className="icofont icofont-ui-edit me-2 edit-link-custom" onClick={()=>{openEditModal(row._id)}} title="Edit record"></i> 
                 <i className="icofont icofont-ui-delete me-2 delete-link-custom" onClick={()=>{   
                     deleteData(row._id) 
-                    setLoaderVisible(true)
                 }} title="Delete record"></i>  
                 <i className="icofont icofont-business-man-alt-1 delete-link-custom" onClick={()=>{   
                     setDisplayAdminModal(true) 
@@ -114,6 +114,7 @@ export default function Index() {
     const deleteData = async (record_id) => {
         let text = "Are you sure to delete this record?";
         if(window.confirm(text) === true) {
+            setLoaderVisible(true)
             deleteRecord(record_id).then((response)=>{
                 if(response?.data?.status){  
                     toast.success(response.data.message)

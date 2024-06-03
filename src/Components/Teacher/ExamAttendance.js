@@ -3,6 +3,7 @@ import {useForm} from "react-hook-form"
 import DataTable from 'react-data-table-component'
 import {toast} from 'react-toastify'
 //import {ThreeDots} from 'react-loader-spinner' 
+import Breadcrum from '../Common/Breadcrum'
 
 import {useLazyListQuery, useAddExamAttendanceMutation, useParticularExamAttendanceMutation} from '../../redux/api/StudentApi.js' 
 import {useLazyListQuery as useLazyExamListQuery} from '../../redux/api/ExamApi.js'
@@ -144,107 +145,81 @@ export default function ExamAttendance() {
                         <div class="loader-p"></div>
                     </div>
                 </div>:''} 
-                <div className="container-fluid">
-                    <div className="page-title">
-                        <div className="row">
-                            <div className="col-sm-6 ps-0"><h3>{pageName[0].title_1}</h3></div>
-                            <div className="col-sm-6 pe-0">
-                                <ol className="breadcrumb">
-                                    <li className="breadcrumb-item">
-                                        <a href="#">
-                                            <svg className="stroke-icon">
-                                                <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
-                                            </svg>
-                                        </a>
-                                    </li> 
-                                    <li className="breadcrumb-item active">{pageName[0].title_1}</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
+                <Breadcrum title={pageName[0].title_1} />  
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="card">
                                 <div className="card-body custom-card-list">
-                                    <div className="list-product-header"> 
-                                        <form method="POST" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data"> 
-                                        <div className="row align-left p-4"> 
+                                    <div className="list-product-header-attendance"> 
+                                        <form method="POST" onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">  
+                                        <div className="main-custom-form"> 
+                                        <div className="row">   
                                             <div className="col-md-3">
-                                                <div className="form-floating">
-                                                    <select className="form-select" id="floatingSelectGrid" {...register('exam_name', { required: 'This field is required.' })}> 
-                                                        <option value="">Select Exam</option>
+                                                <div className="input-group">
+                                                    <label class="input-group-text bg-primary b-dark" for="inputGroupSelect01">Exam &nbsp;&nbsp;&nbsp;</label>
+                                                    <select className="form-select b-primary" id="inputGroupSelect01" {...register('exam_name', { required: 'This field is required.' })}> 
+                                                        <option value="">Select</option>
                                                         { (examData)?examData.map((examItem,key)=>{
                                                             return(  
                                                                 <option value={examItem._id} key={key}>{examItem.exam_name}</option> 
                                                             )}):''
                                                         }  
                                                     </select>
-                                                    {errors.exam_name && <span className="error-message">{errors.exam_name.message}</span>}
-                                                    <label for="floatingSelectGrid">
-                                                        Please select section
-                                                    </label>
                                                 </div>
+                                                {errors.exam_name && <span className="error-message">{errors.exam_name.message}</span>} 
                                             </div>  
-                                            <div className="col-md-2">
-                                                <div className="form-floating">
-                                                    <select className="form-select" {...register('exam_class', { required: 'This field is required.' })} onChange={(e)=>{
+                                            <div className="col-md-3">
+                                                <div className="input-group">
+                                                    <label class="input-group-text bg-primary b-dark" for="inputGroupSelect02">Class &nbsp;&nbsp;&nbsp;</label>
+                                                    <select className="form-select b-primary" {...register('exam_class', { required: 'This field is required.' })} onChange={(e)=>{
                                                                     updateSectionData(e.target.value)
                                                                     setData([])
                                                                 }} id="classSelectBox">  
-                                                        <option value="">Select Class</option>
+                                                        <option value="">Select</option>
                                                         { (classData)?classData.map((classItem,key)=>{
                                                             return(  
                                                                 <option id={JSON.stringify(classItem)} value= {classItem._id} key={key}>{classItem.class_name}</option> 
                                                             )}):''
                                                         }  
                                                     </select>
-                                                    {errors.exam_class && <span className="error-message">{errors.exam_class.message}</span>}
-                                                    <label for="floatingSelectGrid">
-                                                        Please select class
-                                                    </label>
-                                                </div>
+                                                </div> 
+                                                {errors.exam_class && <span className="error-message">{errors.exam_class.message}</span>} 
                                             </div> 
                                             <div className="col-md-3">
-                                                <div className="form-floating">
-                                                    <select className="form-select" id="floatingSelectGrid" {...register('exam_section', { required: 'This field is required.' })}> 
-                                                        <option value="">Select Section</option>
+                                                <div className="input-group">
+                                                    <label class="input-group-text bg-primary b-dark" for="inputGroupSelect03">Section</label>
+                                                    <select className="form-select b-primary" id="floatingSelectGrid" {...register('exam_section', { required: 'This field is required.' })}> 
+                                                        <option value="">Select</option>
                                                         { (sectionData)?sectionData.map((sectionItem,key)=>{
                                                             return(  
                                                                 <option value={sectionItem._id} key={key}>{sectionItem.section_name}</option> 
                                                             )}):''
                                                         }  
                                                     </select>
-                                                    {errors.exam_section && <span className="error-message">{errors.exam_section.message}</span>}
-                                                    <label for="floatingSelectGrid">
-                                                        Please select section
-                                                    </label>
                                                 </div>
+                                                {errors.exam_section && <span className="error-message">{errors.exam_section.message}</span>} 
                                             </div> 
-                                            <div className="col-md-2">
-                                                <div className="form-floating">
-                                                        <select className="form-select" id="floatingSelectGrid" {...register('exam_subject', { required: 'This field is required.' })}> 
-                                                            <option value="">Select Subject</option>
-                                                            { (subjectData)?subjectData.map((subjectItem,key)=>{
-                                                                return(  
-                                                                    <option value={subjectItem._id} key={key}>{subjectItem.subject_name}</option> 
-                                                                )}):''
-                                                            }  
-                                                        </select>
-                                                        {errors.exam_subject && <span className="error-message">{errors.exam_subject.message}</span>}
-                                                    <label for="floatingSelectGrid">
-                                                        Please select subject
-                                                    </label>
-                                                </div>
+                                            <div className="col-md-3">
+                                                <div className="input-group">
+                                                    <label class="input-group-text bg-primary b-dark" for="inputGroupSelect01">Subject</label>
+                                                    <select className="form-select b-primary" id="floatingSelectGrid" {...register('exam_subject', { required: 'This field is required.' })}> 
+                                                        <option value="">Select</option>
+                                                        { (subjectData)?subjectData.map((subjectItem,key)=>{
+                                                            return(  
+                                                                <option value={subjectItem._id} key={key}>{subjectItem.subject_name}</option> 
+                                                            )}):''
+                                                        }  
+                                                    </select>
+                                                </div> 
+                                                {errors.exam_subject && <span className="error-message">{errors.exam_subject.message}</span>} 
                                             </div> 
-                                            <div className="col-md-2">
-                                                <div className="form-floating">
-                                                    <button type="submit" className="btn btn-success-gradien border-dark me-3" style={{height:'58px'}}>
-                                                        <b>Attendance</b>
-                                                    </button>
-                                                </div>
-                                            </div>
+                                            <div className="col-md-12 custom-attendance-button"> 
+                                                <button type="submit" className="btn btn-primary-gradien b-dark">
+                                                    <b><i class="icofont icofont-building-alt"></i> Submit</b>
+                                                </button> 
+                                            </div> 
+                                            </div> 
                                         </div> 
                                         </form>
                                     </div>

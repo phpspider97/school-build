@@ -3,9 +3,11 @@ import {useForm} from "react-hook-form"
 import DataTable from 'react-data-table-component'
 import {toast} from 'react-toastify'
 //import {ThreeDots} from 'react-loader-spinner'   
+import Breadcrum from '../Common/Breadcrum'
+import BulkTeacherModal from './BulkTeacherModal'
 
 import {useAddMutation, useEditMutation, useDeleteMutation, useDeleteBulkMutation, useLazyParticularListQuery, useLazyListQuery} from '../../redux/api/TeacherApi.js'
- 
+  
 export default function Index() {
     const [pageName] = useState([{
         title_1 : 'ADD TEACHER',
@@ -13,6 +15,7 @@ export default function Index() {
         title_3 : "EDIT TEACHER",
         title_4 : "TEACHER",
         title_5 : "ADD-MANAGE TEACHER'S",
+        title_6 : "UPLOAD BULK TEACHER'S",
     }])
 
     const [data,setData] = useState([]) 
@@ -23,6 +26,7 @@ export default function Index() {
     const [adminState] = useState(['Punjab','Haryana','Himachal'])
     const [genderList] = useState(['Male','Female','Other'])
     const [bloodGroupList] = useState(['O+','A+','B+','AB+','O-','A-','B-','AB-'])
+    const [displayTeacherModal,setDisplayTeacherModal] = useState(false)
 
     const {register, handleSubmit, formState: { errors }, setValue, reset} = useForm()
  
@@ -49,7 +53,7 @@ export default function Index() {
           },
         {
             name: 'Status',
-            selector: row => (row.is_active === 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
+            selector: row => (row.is_active == 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
         },
         {
             name: 'Action',
@@ -156,7 +160,7 @@ export default function Index() {
         }).catch((err)=>{ 
             toast.error(`Error : ${err.message}`)
         })
-    },[getAllValidationRecord])
+    },[getAllValidationRecord,displayTeacherModal])
 
     const handleChange = ({ selectedRows }) => {
         setDeleteDisabled(true)
@@ -169,7 +173,9 @@ export default function Index() {
         }
         setBulkRecordID(selected_value) 
     }
-    
+    const checkDisplayBulkTeacherModal = (data) => {
+        setDisplayTeacherModal(data)
+    } 
     return ( 
         <>  
             <div className="page-body">
@@ -179,25 +185,7 @@ export default function Index() {
                         <div class="loader-p"></div>
                     </div>
                 </div>:''} 
-                <div className="container-fluid">
-                    <div className="page-title">
-                        <div className="row">
-                            <div className="col-sm-6 ps-0"><h3>{pageName[0].title_1}</h3></div>
-                            <div className="col-sm-6 pe-0">
-                                <ol className="breadcrumb">
-                                    <li className="breadcrumb-item">
-                                        <a href="#">
-                                            <svg className="stroke-icon">
-                                                <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
-                                            </svg>
-                                        </a>
-                                    </li> 
-                                    <li className="breadcrumb-item active">{pageName[0].title_1}</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
+                <Breadcrum title={pageName[0].title_1} />  
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-12">
@@ -211,6 +199,12 @@ export default function Index() {
                                                 <b>{pageName[0].title_2}</b>
                                             </button> 
                                             :''}
+
+                                            <button className="btn btn-info-gradien btn-sm" type="button" onClick={()=>{   
+                                                setDisplayTeacherModal(true)  
+                                            }}>
+                                                <b>{pageName[0].title_6}</b>
+                                            </button> 
 
                                             <button className="btn btn-primary-gradien btn-sm" type="button" data-bs-toggle="modal" data-bs-target=".bd-example-modal-fullscreen" id="open-modal" onClick={()=>reset()}>
                                                 <b>{pageName[0].title_1}</b>
@@ -338,7 +332,7 @@ export default function Index() {
                                                         <div className="col">
                                                             <div className="text-end">   
                                                                 <button type="submit" className="btn btn-primary-gradien btn-lg border-dark me-3">
-                                                                    <b>Add</b>
+                                                                    <b>Save</b>
                                                                 </button>
                                                                 <button type="reset" className="btn btn-danger-gradien btn-lg border-dark">
                                                                     <b>Reset</b>
@@ -355,7 +349,8 @@ export default function Index() {
                         </div>
                     </div>
                 </div>
-            </div> 
+            </div>
+            <BulkTeacherModal isDisplayModal={displayTeacherModal} checkDisplayBulkTeacherModal={checkDisplayBulkTeacherModal}/> 
         </div>    
     </>
     )

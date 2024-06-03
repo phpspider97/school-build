@@ -40187,7 +40187,7 @@ footer p .footer-icon {
 .page-wrapper .sidebar-main-title h6 {
   font-size: 14px;
   font-weight: 600;
-  color: #307EF3;
+  color: #f0f0f0;
   text-transform: uppercase;
   margin-bottom: 0;
   letter-spacing: 0.4px;
@@ -40238,7 +40238,7 @@ footer p .footer-icon {
   z-index: 9;
   height: auto;
   line-height: inherit;
-  background: #36405E;
+  background: #0c0237;
   border-right : 5px solid #5796f5;
   width: 246px;
   text-align: left;
@@ -40250,7 +40250,7 @@ footer p .footer-icon {
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .logo-wrapper,
 .page-wrapper.compact-wrapper .page-body-wrapper div.sidebar-wrapper .logo-icon-wrapper {
   padding: 18px 18px;
-  background-color: #4F5875;
+  background-color: #5796f5;
   -webkit-box-shadow: -9px 0 20px rgba(89, 102, 122, 0.1);
           box-shadow: -9px 0 20px rgba(89, 102, 122, 0.1);
 }
@@ -49733,6 +49733,26 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
   border-bottom-left-radius: 100px; 
 }
 
+.list-product-header-attendance{
+  border-bottom: 2px dashed black;
+  margin-bottom: 20px; 
+  background: #3110dc17;
+  border-top:3px solid #0d7db2;
+  padding: 10px;
+}
+
+.list-product-header-attendance div{
+  padding-top: 5px; 
+  margin-bottom: 5px;  
+}
+
+.custom-attendance-button{
+  text-align:end; 
+}
+.custom-attendance-button button{
+  width:255px; 
+}
+
 .list-product-header div{ 
   padding-top: 10px;  
   margin-right: 30px;  
@@ -49823,6 +49843,9 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
     justify-content:end !important;
   }
   
+  .custom-attendance-button button{
+    width:100%; 
+  }
 } 
 /* .login-radio-div-custom{
   margin: 4px, 4px;

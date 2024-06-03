@@ -60,7 +60,7 @@ export const adminApi = createApi({
                 url:`/token`,
                 method: 'GET'
             }), 
-            invalidatesTags : ['admin']
+            providesTags : ['admin']
         }),
         tokenBaseEdit: builder.mutation({
             query : (data) => {  

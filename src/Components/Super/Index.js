@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import {Helmet} from "react-helmet"
+import Breadcrum from '../Common/Breadcrum'
 export default function Index() {
     const [pageName] = useState([{
         title_1 : 'Dashboard',
@@ -15,25 +16,7 @@ export default function Index() {
     return ( 
         <>  
             <div className="page-body">
-                <div className="container-fluid">
-                    <div className="page-title">
-                        <div className="row">
-                            <div className="col-sm-6 ps-0"><h3>{pageName[0].title_1}</h3></div>
-                            <div className="col-sm-6 pe-0">
-                                <ol className="breadcrumb">
-                                    <li className="breadcrumb-item">
-                                        <a href="#">
-                                            <svg className="stroke-icon">
-                                                <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
-                                            </svg>
-                                        </a>
-                                    </li> 
-                                    <li className="breadcrumb-item active">{pageName[0].title_1}</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div> 
+                <Breadcrum title={pageName[0].title_1} /> 
                 <div className="container-fluid general-widget">
                     <div className="row"> 
                         <div class="col-xl-6 col-xl-100 box-col-12">

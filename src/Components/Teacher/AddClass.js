@@ -6,6 +6,7 @@ import {toast} from 'react-toastify'
 import AddSectionModal from './AddSectionModal'
 import AddSubjectModal from './AddSubjectModal'
 import AddSyllabusModal from './AddSyllabusModal'
+import Breadcrum from '../Common/Breadcrum'
  
 import {useAddMutation, useEditMutation, useDeleteMutation, useDeleteBulkMutation, useLazyParticularQuery, useLazyListQuery} from '../../redux/api/ClassApi.js'
 
@@ -49,7 +50,7 @@ export default function Index() {
         },
         {
             name: 'Status',
-            selector: row => (row.is_active === 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
+            selector: row => (row.is_active == 1)?<span className="badge rounded-pill badge-success me-1">Active</span>:<span className="badge rounded-pill badge-danger me-1">De-active</span>,
         },
         {
             name: 'Action',
@@ -197,25 +198,7 @@ export default function Index() {
                         <div class="loader-p"></div>
                     </div>
                 </div>:''} 
-                <div className="container-fluid">
-                    <div className="page-title">
-                        <div className="row">
-                            <div className="col-sm-6 ps-0"><h3>{pageName[0].title_1}</h3></div>
-                            <div className="col-sm-6 pe-0">
-                                <ol className="breadcrumb">
-                                    <li className="breadcrumb-item">
-                                        <a href="#">
-                                            <svg className="stroke-icon">
-                                                <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
-                                            </svg>
-                                        </a>
-                                    </li> 
-                                    <li className="breadcrumb-item active">{pageName[0].title_1}</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
+                <Breadcrum title={pageName[0].title_1} />  
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-12">
@@ -282,7 +265,7 @@ export default function Index() {
                                                         <div className="col">
                                                             <div className="text-end">   
                                                                 <button type="submit" className="btn btn-primary-gradien btn-lg border-dark me-3">
-                                                                    <b>Add</b>
+                                                                    <b>Save</b>
                                                                 </button>
                                                                 <button type="reset" className="btn btn-danger-gradien btn-lg border-dark">
                                                                     <b>Reset</b>

@@ -3,6 +3,7 @@ import React,{useState, useEffect} from 'react'
 import DataTable from 'react-data-table-component'
 import {toast} from 'react-toastify'
 //import {ThreeDots} from 'react-loader-spinner' 
+import Breadcrum from '../Common/Breadcrum'
 
 import {useLazyListQuery, useAddAttendanceMutation, useParticularAttendanceMutation} from '../../redux/api/StudentApi.js' 
 import {useLazyListQuery as useLazyClassListQuery} from '../../redux/api/ClassApi.js'
@@ -117,36 +118,20 @@ export default function StudentAttendance() {
                     <div class="theme-loader">    
                         <div class="loader-p"></div>
                     </div>
-                </div>:''} 
-                <div className="container-fluid">
-                    <div className="page-title">
-                        <div className="row">
-                            <div className="col-sm-6 ps-0"><h3>{pageName[0].title_1}</h3></div>
-                            <div className="col-sm-6 pe-0">
-                                <ol className="breadcrumb">
-                                    <li className="breadcrumb-item">
-                                        <a href="#">
-                                            <svg className="stroke-icon">
-                                                <use href="../assets/svg/icon-sprite.svg#stroke-home"></use>
-                                            </svg>
-                                        </a>
-                                    </li> 
-                                    <li className="breadcrumb-item active">{pageName[0].title_1}</li>
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
-                </div>  
+                </div>:''}  
+                <Breadcrum title={pageName[0].title_1} />  
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-12">
                             <div className="card">
                                 <div className="card-body custom-card-list">
-                                    <div className="list-product-header">  
+                                    <div className="list-product-header-attendance main-custom-form">  
                                         <div className="row align-left">  
+                                            <div className="col-md-6"></div>
                                             <div className="col-md-3">
-                                                <div className="form-floating p-1">
-                                                    <select className="form-select b-dark" id="floatingSelectGrid" onChange={(e)=>{
+                                                <div className="input-group"> 
+                                                    <label class="input-group-text bg-primary b-dark text-center" for="inputGroupSelect02">&nbsp;&nbsp;Class&nbsp;</label>
+                                                    <select className="form-select b-primary" id="floatingSelectGrid" onChange={(e)=>{
                                                                     updateSectionData(e.target.value)
                                                                     setData([])
                                                                 }}>  
@@ -156,15 +141,13 @@ export default function StudentAttendance() {
                                                                 <option value={JSON.stringify(classItem)} key={key}>{classItem.class_name}</option> 
                                                             )}):''
                                                         }  
-                                                    </select>
-                                                    <label for="floatingSelectGrid">
-                                                        Please select class
-                                                    </label>
+                                                    </select> 
                                                 </div>
                                             </div> 
                                             <div className="col-md-3">
-                                                <div className="form-floating p-1">
-                                                    <select className="form-select  b-dark" id="floatingSelectGrid" onChange={(e)=>{
+                                                <div className="input-group">
+                                                    <label class="input-group-text bg-primary b-dark" for="inputGroupSelect02">Section</label>
+                                                    <select className="form-select b-primary" id="floatingSelectGrid" onChange={(e)=>{
                                                         displayStudentRecord(e.target.value)
                                                     }}> 
                                                         <option value="">Select Section</option>
@@ -173,10 +156,7 @@ export default function StudentAttendance() {
                                                                 <option value={sectionItem._id} key={key}>{sectionItem.section_name}</option> 
                                                             )}):''
                                                         }  
-                                                    </select>
-                                                    <label for="floatingSelectGrid">
-                                                        Please select section
-                                                    </label>
+                                                    </select> 
                                                 </div>
                                             </div> 
                                         </div> 

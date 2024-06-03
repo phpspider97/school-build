@@ -22,6 +22,14 @@ export const teacherApi = createApi({
             }),
             invalidatesTags : ['teacher']
         }),
+        addBulk: builder.mutation({
+            query : (data) => ({
+                url:'/bulk',
+                method: 'POST',
+                body:data
+            }),
+            invalidatesTags : ['teacher']
+        }),
         edit: builder.mutation({
             query : (parameterData) => { 
                 const {dataID,...data} = parameterData
@@ -89,4 +97,4 @@ export const teacherApi = createApi({
     }),
 }) 
  
-export const { useAddMutation, useEditMutation, useDeleteMutation, useDeleteBulkMutation, useLazyParticularListQuery, useLazyListQuery, useLoginMutation, useParticularPermissionMutation, useAddPermissionMutation } = teacherApi
+export const { useAddMutation, useAddBulkMutation, useEditMutation, useDeleteMutation, useDeleteBulkMutation, useLazyParticularListQuery, useLazyListQuery, useLoginMutation, useParticularPermissionMutation, useAddPermissionMutation } = teacherApi
