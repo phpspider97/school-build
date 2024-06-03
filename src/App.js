@@ -9,6 +9,7 @@ import RedirectIfLogin from './Components/Auth/RedirectIfLogin'
 // import MenuBar from './Components/Common/MenuBar'
 // import Header from './Components/Common/Header'
 // import Bottom from './Components/Common/Bottom' 
+import Fallback from './Components/Common/Fallback' 
 
 const MenuBar = React.lazy(() => import('./Components/Common/MenuBar'))
 const Header = React.lazy(() => import('./Components/Common/Header'))
@@ -36,6 +37,7 @@ const AddRoom = React.lazy(() => import('./Components/Admin/AddRoom'))
 const AddAssignment = React.lazy(() => import('./Components/Admin/AddAssignment')) 
 const AddRoutine = React.lazy(() => import('./Components/Admin/AddRoutine')) 
 
+
 const App = () => {  
     const globalState = useSelector((state)=>state.sessionData.value)
     return (
@@ -43,7 +45,7 @@ const App = () => {
             {/* <MenuBar /> */}
             <ToastContainer /> 
             <Routers> 
-                <Suspense fallback={<div>Component is loading...</div>}>
+                <Suspense fallback={<Fallback />}>
                     <Routes>
                         <Route path="/" element={<Login/>} /> 
                         <Route element={<RedirectIfLogin />}>
