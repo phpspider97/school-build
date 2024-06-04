@@ -28,7 +28,7 @@ export default function SuperBottom() {
                     <script src="/assets/js/scrollbar/simplebar.js"></script>
                     <script src="/assets/js/scrollbar/custom.js"></script> 
                     <script src="/assets/js/sidebar-menu.js"></script> 
-                    <script src="/assets/js/sidebar-pin.js"></script>
+                    <script src="/assets/js/sidebar-pin.js"></script> 
                 </Helmet>
                 :''
             }

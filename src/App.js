@@ -1,4 +1,4 @@
-import React,{Suspense} from "react"
+import React,{Suspense,useEffect} from "react"
 import {HashRouter as Routers,Routes,Route} from 'react-router-dom'  
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -36,9 +36,17 @@ const AddExamSchedule = React.lazy(() => import('./Components/Admin/AddExamSched
 const AddRoom = React.lazy(() => import('./Components/Admin/AddRoom')) 
 const AddAssignment = React.lazy(() => import('./Components/Admin/AddAssignment')) 
 const AddRoutine = React.lazy(() => import('./Components/Admin/AddRoutine')) 
-
+// import firebase from './firebase'
 
 const App = () => {  
+    useEffect(()=>{
+        // const msg=firebase.messaging();
+        // msg.requestPermission().then(()=>{
+        //   return msg.getToken();
+        // }).then((data)=>{
+        //   console.warn("token",data)
+        // })
+    })
     const globalState = useSelector((state)=>state.sessionData.value)
     return (
         <> 

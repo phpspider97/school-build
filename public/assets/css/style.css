@@ -20531,7 +20531,7 @@ p.data-attributes svg {
           transform: translateY(-5px);
 }
 .default-dashboard .welcome-card .card-body {
-  background-image: url(../../assets/images/dashboard/bg.png);
+  background-image: url(https://cdn.pixabay.com/photo/2014/08/13/20/16/school-417612_1280.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
