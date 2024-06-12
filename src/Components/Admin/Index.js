@@ -95,14 +95,14 @@ export default function Index() {
                                                         <div className="dashboard-user bg-light-danger">
                                                             <span></span>
                                                             <svg>
-                                                                <use href="<?= SITE_URL_ADMIN;?>/assets/svg/icon-sprite.svg#profile"></use>
+                                                                <use href="assets/svg/icon-sprite.svg#profile"></use>
                                                             </svg>
                                                         </div>
                                                     </div>
                                                     <div className="customer mt-2">
                                                         <span className="me-1">
                                                             <svg>
-                                                                <use href="<?= SITE_URL_ADMIN;?>/assets/svg/icon-sprite.svg#arrow-down"></use>
+                                                                <use href="assets/svg/icon-sprite.svg#arrow-down"></use>
                                                             </svg>
                                                         </span>
                                                         <span className="font-danger me-2">+ 2.3%</span><span>Since last Week</span>
@@ -121,14 +121,14 @@ export default function Index() {
                                                         <div className="dashboard-user bg-light-success">
                                                             <span></span>
                                                             <svg>
-                                                                <use href="<?= SITE_URL_ADMIN;?>/assets/svg/icon-sprite.svg#invoice"></use>
+                                                                <use href="assets/svg/icon-sprite.svg#invoice"></use>
                                                             </svg>
                                                         </div>
                                                     </div>
                                                     <div className="customer mt-2">
                                                         <span className="me-1">
                                                             <svg>
-                                                                <use href="<?= SITE_URL_ADMIN;?>/assets/svg/icon-sprite.svg#arrow-up"></use>
+                                                                <use href="assets/svg/icon-sprite.svg#arrow-up"></use>
                                                             </svg>
                                                         </span>
                                                         <span className="font-success me-2">+ 6.3%</span><span>Since last Week</span>
@@ -182,7 +182,7 @@ export default function Index() {
                                         </div>
                                         <div className="card-body-custom">
                                             <div className="d-flex align-items-center pt-0">
-                                                <img src="<?= SITE_URL_ADMIN;?>/assets/images/dashboard/1.jpg" alt="" />
+                                                <img src="assets/images/dashboard/1.jpg" alt="" />
                                                 <div className="flex-grow-1 ms-3">
                                                     <a href="social-app.html">
                                                         <h5>Indonesian Navy Lauds Mental Perseverance of Teenager...</h5>
@@ -194,7 +194,7 @@ export default function Index() {
                                                 </div>
                                             </div>
                                             <div className="d-flex align-items-center">
-                                                <img src="<?= SITE_URL_ADMIN;?>/assets/images/dashboard/2.jpg" alt="" />
+                                                <img src="assets/images/dashboard/2.jpg" alt="" />
                                                 <div className="flex-grow-1 ms-3">
                                                     <a href="social-app.html">
                                                         <h5>Why now may be the 'golden age' for Southeast asia start-ups...</h5>
@@ -206,7 +206,7 @@ export default function Index() {
                                                 </div>
                                             </div>
                                             <div className="d-flex align-items-center">
-                                                <img src="<?= SITE_URL_ADMIN;?>/assets/images/dashboard/3.jpg" alt="" />
+                                                <img src="assets/images/dashboard/3.jpg" alt="" />
                                                 <div className="flex-grow-1 ms-3">
                                                     <a href="social-app.html">
                                                         <h5>China's renewed crypto crackdown wipes nearly $400...</h5>
@@ -218,7 +218,7 @@ export default function Index() {
                                                 </div>
                                             </div>
                                             <div className="d-flex align-items-center">
-                                                <img src="<?= SITE_URL_ADMIN;?>/assets/images/dashboard/4.jpg" alt="" />
+                                                <img src="assets/images/dashboard/4.jpg" alt="" />
                                                 <div className="flex-grow-1 ms-3">
                                                     <a href="social-app.html">
                                                         <h5>Indonesian Navy Lauds Mental Perseverance of Teenager...</h5>
