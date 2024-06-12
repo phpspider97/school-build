@@ -44,7 +44,7 @@ self.addEventListener('fetch', (event) => {
     if (event.request.method !== 'GET') {
         return;
     }
-    //if (!navigator.onLine) { 
+    if (!navigator.onLine) { 
         event.respondWith(
             caches.match(event.request).then((response) => {
             if (response) {
@@ -63,5 +63,5 @@ self.addEventListener('fetch', (event) => {
             });
             })
         );
-   // }
+    }
 });
