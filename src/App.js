@@ -1,4 +1,4 @@
-import React,{Suspense,useEffect} from "react"
+import React,{Suspense,useEffect,useState} from "react"
 import {HashRouter as Routers,Routes,Route} from 'react-router-dom'  
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -38,6 +38,8 @@ const AddAssignment = React.lazy(() => import('./Components/Admin/AddAssignment'
 const AddRoutine = React.lazy(() => import('./Components/Admin/AddRoutine')) 
 // import firebase from './firebase'
 
+import './App.css';
+
 const App = () => {  
     useEffect(()=>{
         // const msg=firebase.messaging();
@@ -47,6 +49,29 @@ const App = () => {
         //   console.warn("token",data)
         // })
     })
+    const [deferredPrompt, setDeferredPrompt] = useState(null);
+    useEffect(() => {
+        window.addEventListener('beforeinstallprompt', (e) => {
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        setDeferredPrompt(e);
+        });
+    }, []);
+
+    const handleAddToHomeScreen = () => {
+        if (deferredPrompt) {
+        deferredPrompt.prompt();
+        deferredPrompt.userChoice.then((choiceResult) => {
+            if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the A2HS prompt');
+            } else {
+            console.log('User dismissed the A2HS prompt');
+            }
+            setDeferredPrompt(null);
+        });
+        }
+    };
     const globalState = useSelector((state)=>state.sessionData.value)
     return (
         <> 
@@ -98,6 +123,13 @@ const App = () => {
                 </Suspense>
                 
             </Routers>
+            <div className="App">
+                <header className="App-header"> 
+                    {deferredPrompt && (
+                        <button onClick={handleAddToHomeScreen}>Add to Home Screen</button>
+                    )}
+                </header>
+            </div>
         </>
     );
 }  

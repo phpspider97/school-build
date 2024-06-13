@@ -1,0 +1,18 @@
+.App {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    z-index: 10000000;
+    background-color: bisque;
+}
+
+/* Header */
+.App-header {
+    background-color: #f5f7fb;
+    padding: 20px;
+    color: white;
+    width: 100%;
+}
